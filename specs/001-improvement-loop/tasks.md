@@ -129,7 +129,7 @@ Claude Code 向けルールはリポジトリ直下の `CLAUDE.md`。いずれ�
 - [X] T020 `docs/improvement-loop.md` 全体を見直す: 憲章 v1.1.0 の Governance・「開発ワークフローと品質ゲート」と矛盾しないこと(FR-019)、contracts/ のラベル名・書式と表記が一致すること、手順書だけで登録から反映まで実施できること(FR-018)
 - [X] T021 quickstart.md の手順 1(`python3 scripts/check-issue-forms.py`)を再実行し、結果を記録する
 - [ ] T022 実装 PR を作成する。PR テンプレートはマージ前は反映されないため、contracts/pr-template.md の構成で本文を書き、`Closes #3` は付けずに `Refs #3` とする(フェーズ 1 はマージ後の受け入れ検証まで含むため)。振り返り欄を記入し、運用者のレビューとマージを依頼する
-- [ ] T023 マージ後に quickstart.md の手順 3〜6 を実施する。手順 3 では実際の気づき 1 件を登録し、手順 4 でその提案を判断・反映して一巡させる(SC-002)。結果と所要時間を反映 PR の振り返りに記録し、同じ PR で `kit-dev/roadmap.md` のフェーズ 1 を「完了」にし、`Closes #3` で Issue #3 を閉じる
+- [X] T023 マージ後に quickstart.md の手順 3〜6 を実施する。手順 3 では実際の気づき 1 件を登録し、手順 4 でその提案を判断・反映して一巡させる(SC-002)。結果と所要時間を反映 PR の振り返りに記録し、同じ PR で `kit-dev/roadmap.md` のフェーズ 1 を「完了」にし、`Closes #3` で Issue #3 を閉じる
 
 ---
 
