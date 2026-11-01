@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 改善ループの手順書
+    url: https://github.com/nananastuinfo-gif/default_aidd/blob/main/docs/improvement-loop.md
+    about: 改善提案の登録・判断・反映の手順

@@ -1,0 +1,43 @@
+name: "改善提案: 憲章"
+description: "`.specify/memory/constitution.md` の原則・標準プロセス・品質ゲート・Governance への改善提案"
+title: "[改善][憲章] "
+labels: ["improvement", "status:triage", "target:constitution"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        AIDD 標準の **憲章** に対する改善提案を登録します。書き方は[改善ループの手順書](https://github.com/nananastuinfo-gif/default_aidd/blob/main/docs/improvement-loop.md)を参照してください。
+
+        > **このリポジトリが default_aidd でない場合**: 標準(AIDD)そのものへの提案は、
+        > [default_aidd の同じフォーム](https://github.com/nananastuinfo-gif/default_aidd/issues/new?template=improvement-constitution.yml)から登録してください。
+        > このプロジェクト固有の改善は、このフォームのまま登録して構いません。
+  - type: textarea
+    id: context
+    attributes:
+      label: 気づいた作業
+      description: どの作業中に気づいたか。関連する Issue/PR 番号があれば書いてください。
+      placeholder: "例: #3 の /speckit-plan 実行中"
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: 問題点
+      description: 何が困ったか、何が不足しているか。
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 改善案
+      description: 案がなければ「未定(判断時に検討)」と書いてください。
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: 出典
+      description: 提案が生まれたリポジトリ。
+      placeholder: default_aidd または派生プロジェクトのリポジトリ名
+    validations:
+      required: true
