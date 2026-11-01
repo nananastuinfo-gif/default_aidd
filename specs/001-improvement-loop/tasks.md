@@ -32,7 +32,7 @@ Claude Code 向けルールはリポジトリ直下の `CLAUDE.md`。いずれ�
 
 **Purpose**: ディレクトリの用意
 
-- [ ] T001 リポジトリ直下に `.github/ISSUE_TEMPLATE/`、`docs/`、`scripts/` ディレクトリを作成する
+- [X] T001 リポジトリ直下に `.github/ISSUE_TEMPLATE/`、`docs/`、`scripts/` ディレクトリを作成する
 
 ---
 
@@ -42,8 +42,8 @@ Claude Code 向けルールはリポジトリ直下の `CLAUDE.md`。いずれ�
 
 **⚠️ CRITICAL**: ラベルが存在しないと、Issue フォームで登録してもラベルが付かない。
 
-- [ ] T002 [P] `scripts/setup-labels.sh` を作成する。contracts/labels.md の 9 ラベル(`improvement` `0E8A16`「AIDD 標準への改善提案」、`target:constitution` `5319E7`「対象: 憲章」、`target:template` `1D76DB`「対象: テンプレート」、`target:process` `0052CC`「対象: 手順」、`status:triage` `FBCA04`「未判断」、`status:needs-info` `F9D0C4`「追加情報待ち」、`decision:constitution` `B60205`「判断: 憲章の改定」、`decision:template-process` `D93F0B`「判断: テンプレート・手順の修正」、`decision:wontfix` `CCCCCC`「判断: 見送り」)を `gh label create <name> --color --description --force` で作成・更新する。第 1 引数 `OWNER/REPO` を `--repo` に渡し、省略時はカレントのリポジトリを対象にする。`set -euo pipefail` を使い、既存ラベルは削除しない。実行権限を付ける
-- [ ] T003 [P] `docs/improvement-loop.md` の骨組みを作成する。見出しは「概要(改善ループの全体像と状態遷移の図)」「1. 改善提案を登録する」「2. 判断する」「3. 反映する」「4. 振り返る」「5. 定期的に見直す」「6. 派生プロジェクトから提案する」「付録: 検索条件」「付録: 初期設定(ラベルの作成)」とし、概要には data-model.md の状態遷移を手順書向けに簡潔に書き、各節の本文は後続タスクで埋める
+- [X] T002 [P] `scripts/setup-labels.sh` を作成する。contracts/labels.md の 9 ラベル(`improvement` `0E8A16`「AIDD 標準への改善提案」、`target:constitution` `5319E7`「対象: 憲章」、`target:template` `1D76DB`「対象: テンプレート」、`target:process` `0052CC`「対象: 手順」、`status:triage` `FBCA04`「未判断」、`status:needs-info` `F9D0C4`「追加情報待ち」、`decision:constitution` `B60205`「判断: 憲章の改定」、`decision:template-process` `D93F0B`「判断: テンプレート・手順の修正」、`decision:wontfix` `CCCCCC`「判断: 見送り」)を `gh label create <name> --color --description --force` で作成・更新する。第 1 引数 `OWNER/REPO` を `--repo` に渡し、省略時はカレントのリポジトリを対象にする。`set -euo pipefail` を使い、既存ラベルは削除しない。実行権限を付ける
+- [X] T003 [P] `docs/improvement-loop.md` の骨組みを作成する。見出しは「概要(改善ループの全体像と状態遷移の図)」「1. 改善提案を登録する」「2. 判断する」「3. 反映する」「4. 振り返る」「5. 定期的に見直す」「6. 派生プロジェクトから提案する」「付録: 検索条件」「付録: 初期設定(ラベルの作成)」とし、概要には data-model.md の状態遷移を手順書向けに簡潔に書き、各節の本文は後続タスクで埋める
 - [ ] T004 運用者の確認を得てから `scripts/setup-labels.sh nananastuinfo-gif/default_aidd` を 2 回実行し、`gh label list` で 9 ラベルの色と説明が contracts/labels.md と一致することを確認する(quickstart.md 手順 2)。`docs/improvement-loop.md` の「付録: 初期設定」に実行方法を書く
 
 **Checkpoint**: ラベルが作成され、手順書の骨組みがある
@@ -60,17 +60,17 @@ Claude Code 向けルールはリポジトリ直下の `CLAUDE.md`。いずれ�
 
 > **NOTE: 検証スクリプトを先に作り、フォームがない状態で失敗することを確認する**
 
-- [ ] T005 [US1] `scripts/check-issue-forms.py` を作成する。contracts/issue-forms.md の検証ルールを実装する: 3 ファイル(`improvement-constitution.yml`、`improvement-template.yml`、`improvement-process.yml`)が存在し YAML として読めること、トップレベルに `name` `description` `title` `labels` `body` があること、`labels` が契約の表と一致すること、markdown 以外の入力欄の `id`・`type`・`required` の並びが `context`(textarea)→`problem`(textarea)→`proposal`(textarea)→`source`(input)で 3 フォーム一致し、すべて `validations.required: true` であること、`source` に `value`(既定値)がないこと、`config.yml` が存在し `blank_issues_enabled: true` かつ `contact_links` が 1 件であること。依存は PyYAML のみ。ファイルごとに `OK` / `NG: 理由` を表示し、1 件でも NG なら終了コード 1。実行して、フォームがないため失敗することを確認する
+- [X] T005 [US1] `scripts/check-issue-forms.py` を作成する。contracts/issue-forms.md の検証ルールを実装する: 3 ファイル(`improvement-constitution.yml`、`improvement-template.yml`、`improvement-process.yml`)が存在し YAML として読めること、トップレベルに `name` `description` `title` `labels` `body` があること、`labels` が契約の表と一致すること、markdown 以外の入力欄の `id`・`type`・`required` の並びが `context`(textarea)→`problem`(textarea)→`proposal`(textarea)→`source`(input)で 3 フォーム一致し、すべて `validations.required: true` であること、`source` に `value`(既定値)がないこと、`config.yml` が存在し `blank_issues_enabled: true` かつ `contact_links` が 1 件であること。依存は PyYAML のみ。ファイルごとに `OK` / `NG: 理由` を表示し、1 件でも NG なら終了コード 1。実行して、フォームがないため失敗することを確認する
 
 ### Implementation for User Story 1
 
-- [ ] T006 [P] [US1] `.github/ISSUE_TEMPLATE/improvement-constitution.yml` を作成する。`name: 改善提案: 憲章`、`title: "[改善][憲章] "`、`labels: [improvement, status:triage, target:constitution]`、`description` は「`.specify/memory/constitution.md` の原則・標準プロセス・品質ゲート・Governance への改善提案」。`body` は contracts/issue-forms.md の順で、先頭の markdown に「標準(AIDD)そのものへの提案で、このリポジトリが default_aidd でない場合は https://github.com/nananastuinfo-gif/default_aidd/issues/new?template=improvement-constitution.yml から登録する」旨と手順書 `docs/improvement-loop.md` への案内を書き、続けて `context`「気づいた作業」、`problem`「問題点」、`proposal`「改善案」(説明に「案がなければ『未定(判断時に検討)』」)、`source`「出典」(input、既定値なし、`placeholder: default_aidd または派生プロジェクトのリポジトリ名`)をすべて必須で置く
-- [ ] T007 [P] [US1] `.github/ISSUE_TEMPLATE/improvement-template.yml` を T006 と同じ構成で作成する。`name: 改善提案: テンプレート`、`title: "[改善][テンプレート] "`、`labels: [improvement, status:triage, target:template]`、`description` は「Spec Kit のテンプレート、Issue/PR テンプレート、種別ごとの文書テンプレートへの改善提案」、案内のリンク先は `?template=improvement-template.yml`
-- [ ] T008 [P] [US1] `.github/ISSUE_TEMPLATE/improvement-process.yml` を T006 と同じ構成で作成する。`name: 改善提案: 手順`、`title: "[改善][手順] "`、`labels: [improvement, status:triage, target:process]`、`description` は「手順書(`docs/` 配下)、作業の進め方、ツールの使い方への改善提案」、案内のリンク先は `?template=improvement-process.yml`
-- [ ] T009 [P] [US1] `.github/ISSUE_TEMPLATE/config.yml` を作成する。`blank_issues_enabled: true`、`contact_links` に「改善ループの手順書」として https://github.com/nananastuinfo-gif/default_aidd/blob/main/docs/improvement-loop.md を 1 件置く
-- [ ] T010 [US1] `python3 scripts/check-issue-forms.py` を実行し、3 フォームすべて `OK`・終了コード 0 になることを確認する(T006〜T008 に依存)
-- [ ] T011 [US1] `docs/improvement-loop.md` の「1. 改善提案を登録する」を書く: 3 フォームの使い分け(対象区分の範囲)、複数区分にまたがる場合は主な区分を 1 つ選ぶこと、各入力欄の書き方、Claude Code が登録する場合は内容を提示して運用者の承認を得てから `gh issue create --label improvement,status:triage,target:<区分>` で登録すること(FR-005)。あわせて「付録: 検索条件」に data-model.md の検索条件の表(未判断・30 日超・対応予定・見送り・反映済み・対象区分)を、`https://github.com/nananastuinfo-gif/default_aidd/issues?q=...` の形のリンク付きで書く
-- [ ] T012 [P] [US1] リポジトリ直下に `CLAUDE.md` を作成する。内容は「改善提案」の節のみ: 作業中に標準(憲章・テンプレート・手順)の改善点に気づいたら、登録内容(対象区分・気づいた作業・問題点・改善案・出典)を運用者に提示し、承認を得てから登録すること。登録方法と書式は `docs/improvement-loop.md` に従うこと。全体の整備はフェーズ 2 で行う旨を 1 行書く
+- [X] T006 [P] [US1] `.github/ISSUE_TEMPLATE/improvement-constitution.yml` を作成する。`name: 改善提案: 憲章`、`title: "[改善][憲章] "`、`labels: [improvement, status:triage, target:constitution]`、`description` は「`.specify/memory/constitution.md` の原則・標準プロセス・品質ゲート・Governance への改善提案」。`body` は contracts/issue-forms.md の順で、先頭の markdown に「標準(AIDD)そのものへの提案で、このリポジトリが default_aidd でない場合は https://github.com/nananastuinfo-gif/default_aidd/issues/new?template=improvement-constitution.yml から登録する」旨と手順書 `docs/improvement-loop.md` への案内を書き、続けて `context`「気づいた作業」、`problem`「問題点」、`proposal`「改善案」(説明に「案がなければ『未定(判断時に検討)』」)、`source`「出典」(input、既定値なし、`placeholder: default_aidd または派生プロジェクトのリポジトリ名`)をすべて必須で置く
+- [X] T007 [P] [US1] `.github/ISSUE_TEMPLATE/improvement-template.yml` を T006 と同じ構成で作成する。`name: 改善提案: テンプレート`、`title: "[改善][テンプレート] "`、`labels: [improvement, status:triage, target:template]`、`description` は「Spec Kit のテンプレート、Issue/PR テンプレート、種別ごとの文書テンプレートへの改善提案」、案内のリンク先は `?template=improvement-template.yml`
+- [X] T008 [P] [US1] `.github/ISSUE_TEMPLATE/improvement-process.yml` を T006 と同じ構成で作成する。`name: 改善提案: 手順`、`title: "[改善][手順] "`、`labels: [improvement, status:triage, target:process]`、`description` は「手順書(`docs/` 配下)、作業の進め方、ツールの使い方への改善提案」、案内のリンク先は `?template=improvement-process.yml`
+- [X] T009 [P] [US1] `.github/ISSUE_TEMPLATE/config.yml` を作成する。`blank_issues_enabled: true`、`contact_links` に「改善ループの手順書」として https://github.com/nananastuinfo-gif/default_aidd/blob/main/docs/improvement-loop.md を 1 件置く
+- [X] T010 [US1] `python3 scripts/check-issue-forms.py` を実行し、3 フォームすべて `OK`・終了コード 0 になることを確認する(T006〜T008 に依存)
+- [X] T011 [US1] `docs/improvement-loop.md` の「1. 改善提案を登録する」を書く: 3 フォームの使い分け(対象区分の範囲)、複数区分にまたがる場合は主な区分を 1 つ選ぶこと、各入力欄の書き方、Claude Code が登録する場合は内容を提示して運用者の承認を得てから `gh issue create --label improvement,status:triage,target:<区分>` で登録すること(FR-005)。あわせて「付録: 検索条件」に data-model.md の検索条件の表(未判断・30 日超・対応予定・見送り・反映済み・対象区分)を、`https://github.com/nananastuinfo-gif/default_aidd/issues?q=...` の形のリンク付きで書く
+- [X] T012 [P] [US1] リポジトリ直下に `CLAUDE.md` を作成する。内容は「改善提案」の節のみ: 作業中に標準(憲章・テンプレート・手順)の改善点に気づいたら、登録内容(対象区分・気づいた作業・問題点・改善案・出典)を運用者に提示し、承認を得てから登録すること。登録方法と書式は `docs/improvement-loop.md` に従うこと。全体の整備はフェーズ 2 で行う旨を 1 行書く
 
 **Checkpoint**: User Story 1 が単独で使える(マージ後に quickstart.md 手順 3 で確認)
 
@@ -84,9 +84,9 @@ Claude Code 向けルールはリポジトリ直下の `CLAUDE.md`。いずれ�
 
 ### Implementation for User Story 2
 
-- [ ] T013 [US2] `docs/improvement-loop.md` の「2. 判断する」を書く: contracts/decision-record.md の判断記録コメントの書式(`## 判断記録` / 判断 / 理由 / 反映先 / 判断日)、「`理由` は空欄にしない」「見送りの場合は、どんな前提が変われば再検討するかも書く」こと、判断ごとのラベルとクローズ操作の表(data-model.md の状態の表: 対応予定は `status:*` を外して `decision:*` を付ける、見送りは `status:*` を外し `decision:wontfix` を付けて「not planned」でクローズ、重複は `status:*` を外し統合先を書いて「duplicate」でクローズ、保留は `status:needs-info` を追加)、判断記録コメントは「判断の経過」であり、標準を変更する判断は反映コミットに残すこと(contracts/decision-record.md「憲章 VII との関係」)、過去に見送った提案と同種の場合の扱い
-- [ ] T014 [US2] `docs/improvement-loop.md` の「3. 反映する」を書く: 対応予定の提案ごとに Issue → ブランチ → PR で進めること、PR 本文に提案ごとの `Closes #N` を書くこと、反映コミットのメッセージに contracts/decision-record.md の書式で背景・判断理由・`Refs #N` を必ず書くこと(憲章 VII の決定記録として Git に残すため)、「憲章の改定」は `/speckit-constitution` で行い、Sync Impact Report を確認・承認後に削除してコミットし、PR タイトルに新しいバージョンを書くこと(FR-012)、反映 PR を中止した場合は新しい判断記録を投稿し、`decision:*` を外して `status:triage` を付け直し、未判断に戻すこと
-- [ ] T015 [US2] `docs/improvement-loop.md` の「5. 定期的に見直す」を書く: 見直しのタイミング(随時、各機能(フェーズ)の完了時、少なくとも月 1 回、四半期ごとの憲章の見直し)、月 1 回の確認では 30 日を超えそうな未判断の提案を優先すること(SC-004)、使う検索条件(付録へのリンク)
+- [X] T013 [US2] `docs/improvement-loop.md` の「2. 判断する」を書く: contracts/decision-record.md の判断記録コメントの書式(`## 判断記録` / 判断 / 理由 / 反映先 / 判断日)、「`理由` は空欄にしない」「見送りの場合は、どんな前提が変われば再検討するかも書く」こと、判断ごとのラベルとクローズ操作の表(data-model.md の状態の表: 対応予定は `status:*` を外して `decision:*` を付ける、見送りは `status:*` を外し `decision:wontfix` を付けて「not planned」でクローズ、重複は `status:*` を外し統合先を書いて「duplicate」でクローズ、保留は `status:needs-info` を追加)、判断記録コメントは「判断の経過」であり、標準を変更する判断は反映コミットに残すこと(contracts/decision-record.md「憲章 VII との関係」)、過去に見送った提案と同種の場合の扱い
+- [X] T014 [US2] `docs/improvement-loop.md` の「3. 反映する」を書く: 対応予定の提案ごとに Issue → ブランチ → PR で進めること、PR 本文に提案ごとの `Closes #N` を書くこと、反映コミットのメッセージに contracts/decision-record.md の書式で背景・判断理由・`Refs #N` を必ず書くこと(憲章 VII の決定記録として Git に残すため)、「憲章の改定」は `/speckit-constitution` で行い、Sync Impact Report を確認・承認後に削除してコミットし、PR タイトルに新しいバージョンを書くこと(FR-012)、反映 PR を中止した場合は新しい判断記録を投稿し、`decision:*` を外して `status:triage` を付け直し、未判断に戻すこと
+- [X] T015 [US2] `docs/improvement-loop.md` の「5. 定期的に見直す」を書く: 見直しのタイミング(随時、各機能(フェーズ)の完了時、少なくとも月 1 回、四半期ごとの憲章の見直し)、月 1 回の確認では 30 日を超えそうな未判断の提案を優先すること(SC-004)、使う検索条件(付録へのリンク)
 
 **Checkpoint**: User Story 1 と 2 で、登録から反映までの一巡ができる
 
@@ -100,8 +100,8 @@ Claude Code 向けルールはリポジトリ直下の `CLAUDE.md`。いずれ�
 
 ### Implementation for User Story 3
 
-- [ ] T016 [P] [US3] `.github/pull_request_template.md` を contracts/pr-template.md のとおりに作成する(セクション順: 関連 Issue → 変更内容 → 確認したこと → 振り返り → マージ前チェック。振り返りは「うまくいった点」「問題点」「改善提案(特になし / #N)」の 3 項目)
-- [ ] T017 [US3] `docs/improvement-loop.md` の「4. 振り返る」を書く: 振り返りの 3 観点と書き方、小さな変更では「特になし」でよいこと、改善提案が出たらマージ前に「1. 改善提案を登録する」の手順で登録して番号を書くこと(FR-014)、機能(フェーズ)を完了する PR では「5. 定期的に見直す」の確認も行うこと
+- [X] T016 [P] [US3] `.github/pull_request_template.md` を contracts/pr-template.md のとおりに作成する(セクション順: 関連 Issue → 変更内容 → 確認したこと → 振り返り → マージ前チェック。振り返りは「うまくいった点」「問題点」「改善提案(特になし / #N)」の 3 項目)
+- [X] T017 [US3] `docs/improvement-loop.md` の「4. 振り返る」を書く: 振り返りの 3 観点と書き方、小さな変更では「特になし」でよいこと、改善提案が出たらマージ前に「1. 改善提案を登録する」の手順で登録して番号を書くこと(FR-014)、機能(フェーズ)を完了する PR では「5. 定期的に見直す」の確認も行うこと
 
 **Checkpoint**: User Story 1〜3 がそれぞれ単独で確認できる
 
@@ -115,7 +115,7 @@ Claude Code 向けルールはリポジトリ直下の `CLAUDE.md`。いずれ�
 
 ### Implementation for User Story 4
 
-- [ ] T018 [US4] `docs/improvement-loop.md` の「6. 派生プロジェクトから提案する」を書く: 還元対象(標準そのもの: 憲章・テンプレート・手順の不備や改善)と対象外(派生プロジェクト固有の運用)の判別基準と例、還元対象は default_aidd の 3 フォーム(`https://github.com/nananastuinfo-gif/default_aidd/issues/new?template=improvement-<区分>.yml`)から登録し「出典」に派生プロジェクトのリポジトリ名を書くこと、派生プロジェクト固有の改善は派生プロジェクト内の同じフォームで登録してよいこと、判断に必要な文脈(気づいた作業)を具体的に書くこと
+- [X] T018 [US4] `docs/improvement-loop.md` の「6. 派生プロジェクトから提案する」を書く: 還元対象(標準そのもの: 憲章・テンプレート・手順の不備や改善)と対象外(派生プロジェクト固有の運用)の判別基準と例、還元対象は default_aidd の 3 フォーム(`https://github.com/nananastuinfo-gif/default_aidd/issues/new?template=improvement-<区分>.yml`)から登録し「出典」に派生プロジェクトのリポジトリ名を書くこと、派生プロジェクト固有の改善は派生プロジェクト内の同じフォームで登録してよいこと、判断に必要な文脈(気づいた作業)を具体的に書くこと
 
 **Checkpoint**: すべてのユーザーストーリーの成果物が揃う
 
@@ -125,9 +125,9 @@ Claude Code 向けルールはリポジトリ直下の `CLAUDE.md`。いずれ�
 
 **Purpose**: 整合性の確認と、PR・受け入れ検証
 
-- [ ] T019 [P] `kit-dev/roadmap.md` を更新する: 「各フェーズの進め方」の手順 4 を「振り返りを PR に記録し(`docs/improvement-loop.md`)、ロードマップの状態を更新する」に変え、フェーズ 4 の注意点の表に「派生先での Issue フォームの表示確認と、`scripts/setup-labels.sh` の実行を派生時の手順に含める」を追記する
-- [ ] T020 `docs/improvement-loop.md` 全体を見直す: 憲章 v1.1.0 の Governance・「開発ワークフローと品質ゲート」と矛盾しないこと(FR-019)、contracts/ のラベル名・書式と表記が一致すること、手順書だけで登録から反映まで実施できること(FR-018)
-- [ ] T021 quickstart.md の手順 1(`python3 scripts/check-issue-forms.py`)を再実行し、結果を記録する
+- [X] T019 [P] `kit-dev/roadmap.md` を更新する: 「各フェーズの進め方」の手順 4 を「振り返りを PR に記録し(`docs/improvement-loop.md`)、ロードマップの状態を更新する」に変え、フェーズ 4 の注意点の表に「派生先での Issue フォームの表示確認と、`scripts/setup-labels.sh` の実行を派生時の手順に含める」を追記する
+- [X] T020 `docs/improvement-loop.md` 全体を見直す: 憲章 v1.1.0 の Governance・「開発ワークフローと品質ゲート」と矛盾しないこと(FR-019)、contracts/ のラベル名・書式と表記が一致すること、手順書だけで登録から反映まで実施できること(FR-018)
+- [X] T021 quickstart.md の手順 1(`python3 scripts/check-issue-forms.py`)を再実行し、結果を記録する
 - [ ] T022 実装 PR を作成する。PR テンプレートはマージ前は反映されないため、contracts/pr-template.md の構成で本文を書き、`Closes #3` は付けずに `Refs #3` とする(フェーズ 1 はマージ後の受け入れ検証まで含むため)。振り返り欄を記入し、運用者のレビューとマージを依頼する
 - [ ] T023 マージ後に quickstart.md の手順 3〜6 を実施する。手順 3 では実際の気づき 1 件を登録し、手順 4 でその提案を判断・反映して一巡させる(SC-002)。結果と所要時間を反映 PR の振り返りに記録し、同じ PR で `kit-dev/roadmap.md` のフェーズ 1 を「完了」にし、`Closes #3` で Issue #3 を閉じる
 
