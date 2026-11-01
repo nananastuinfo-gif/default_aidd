@@ -14,7 +14,7 @@ GitHub Issue として表す。登録は [contracts/issue-forms.md](contracts/is
 | 発生状況 | フォームの入力欄「気づいた作業」 | ○ | 空欄不可。関連する Issue/PR 番号があれば記載 |
 | 問題点 | フォームの入力欄「問題点」 | ○ | 空欄不可 |
 | 改善案 | フォームの入力欄「改善案」 | ○ | 空欄不可。案がなければ「未定(判断時に検討)」と書く |
-| 出典 | フォームの入力欄「出典」 | ○ | `default_aidd` または派生プロジェクトのリポジトリ名 |
+| 出典 | フォームの入力欄「出典」 | ○ | `default_aidd` または派生プロジェクトのリポジトリ名。既定値なし |
 | 状態 | ラベル + open/closed + クローズ理由 | ○ | 下記の状態遷移に従う(FR-004) |
 | 判断記録 | Issue コメント | 判断後は○ | [contracts/decision-record.md](contracts/decision-record.md) の書式(FR-006) |
 | 反映 PR | PR 本文の `Closes #N` | 反映時は○ | 反映済みの提案は、必ず反映 PR からクローズされている(FR-010, FR-011) |
@@ -87,4 +87,5 @@ PR の説明欄の「振り返り」セクションとして表す([contracts/pr
 | 30 日を超えた未判断 | `is:issue is:open label:status:triage created:<YYYY-MM-DD`(30 日前の日付) |
 | 対応予定 | `is:issue is:open label:improvement -label:status:triage` |
 | 見送り | `is:issue is:closed label:decision:wontfix` |
+| 反映済み | `is:issue is:closed reason:completed label:improvement` |
 | 対象区分で絞り込み | 上記に `label:target:constitution` などを追加 |

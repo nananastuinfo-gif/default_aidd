@@ -26,7 +26,7 @@
 | 1 | `context` | textarea | 気づいた作業 | true | どの作業中に気づいたか。関連する Issue/PR 番号 |
 | 2 | `problem` | textarea | 問題点 | true | 何が困ったか、何が不足しているか |
 | 3 | `proposal` | textarea | 改善案 | true | 案がなければ「未定(判断時に検討)」 |
-| 4 | `source` | input | 出典 | true | 既定値 `default_aidd`。派生プロジェクトからの場合はそのリポジトリ名 |
+| 4 | `source` | input | 出典 | true | 既定値は設定しない。`placeholder` で「default_aidd または派生プロジェクトのリポジトリ名」と示す(派生プロジェクトで同じフォームを使っても出典を誤らないため) |
 
 ## 検証ルール(`scripts/check-issue-forms.py`)
 
@@ -35,6 +35,8 @@
 - `labels` が上表と一致すること
 - `body` の入力欄(markdown 以外)の `id`・`type`・`required` の並びが 3 フォームで一致すること
 - 必須の入力欄に `validations.required: true` が設定されていること
+- `source` に既定値(`value`)が設定されていないこと
+- `config.yml` が存在し、`blank_issues_enabled: true` で、`contact_links` が 1 件あること
 
 ## `config.yml`
 
