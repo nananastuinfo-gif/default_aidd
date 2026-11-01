@@ -44,7 +44,7 @@ Claude Code 向けルールはリポジトリ直下の `CLAUDE.md`。いずれ�
 
 - [X] T002 [P] `scripts/setup-labels.sh` を作成する。contracts/labels.md の 9 ラベル(`improvement` `0E8A16`「AIDD 標準への改善提案」、`target:constitution` `5319E7`「対象: 憲章」、`target:template` `1D76DB`「対象: テンプレート」、`target:process` `0052CC`「対象: 手順」、`status:triage` `FBCA04`「未判断」、`status:needs-info` `F9D0C4`「追加情報待ち」、`decision:constitution` `B60205`「判断: 憲章の改定」、`decision:template-process` `D93F0B`「判断: テンプレート・手順の修正」、`decision:wontfix` `CCCCCC`「判断: 見送り」)を `gh label create <name> --color --description --force` で作成・更新する。第 1 引数 `OWNER/REPO` を `--repo` に渡し、省略時はカレントのリポジトリを対象にする。`set -euo pipefail` を使い、既存ラベルは削除しない。実行権限を付ける
 - [X] T003 [P] `docs/improvement-loop.md` の骨組みを作成する。見出しは「概要(改善ループの全体像と状態遷移の図)」「1. 改善提案を登録する」「2. 判断する」「3. 反映する」「4. 振り返る」「5. 定期的に見直す」「6. 派生プロジェクトから提案する」「付録: 検索条件」「付録: 初期設定(ラベルの作成)」とし、概要には data-model.md の状態遷移を手順書向けに簡潔に書き、各節の本文は後続タスクで埋める
-- [ ] T004 運用者の確認を得てから `scripts/setup-labels.sh nananastuinfo-gif/default_aidd` を 2 回実行し、`gh label list` で 9 ラベルの色と説明が contracts/labels.md と一致することを確認する(quickstart.md 手順 2)。`docs/improvement-loop.md` の「付録: 初期設定」に実行方法を書く
+- [X] T004 運用者の確認を得てから `scripts/setup-labels.sh nananastuinfo-gif/default_aidd` を 2 回実行し、`gh label list` で 9 ラベルの色と説明が contracts/labels.md と一致することを確認する(quickstart.md 手順 2)。`docs/improvement-loop.md` の「付録: 初期設定」に実行方法を書く
 
 **Checkpoint**: ラベルが作成され、手順書の骨組みがある
 
